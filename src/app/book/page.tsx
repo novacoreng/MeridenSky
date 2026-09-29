@@ -8,13 +8,13 @@ const bookingOptions = [
     name: "Booking.com",
     label: "Find Meridian Sky on Booking.com",
     href: "https://www.booking.com/",
-    icon: "B",
+    logo: "/images/booking-logo.svg",
   },
   {
-    name: "Expedia",
-    label: "Find Meridian Sky on Expedia",
+    name: "Expedia.com",
+    label: "Find Meridian Sky on Expedia.com",
     href: "https://www.expedia.com/",
-    icon: "e",
+    logo: "/images/expedia-logo.svg",
   },
 ] as const;
 
@@ -32,7 +32,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
         <p className="lede">Choose your preferred booking platform below. Availability and final arrangements will be confirmed separately.</p>
         <div className="bookingOptions" aria-label="Booking platforms">
           {bookingOptions.map((option) => <a className="bookingOption" href={option.href} target="_blank" rel="noreferrer" key={option.name}>
-            <span className="bookingOptionIcon" aria-hidden="true">{option.icon}</span>
+            <span className="bookingOptionIcon" aria-hidden="true"><img src={option.logo} alt="" /></span>
             <span className="bookingOptionCopy"><strong>{option.name}</strong><small>{option.label}</small></span>
             <span className="bookingOptionArrow" aria-hidden="true">↗</span>
           </a>)}
