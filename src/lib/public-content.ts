@@ -1,5 +1,3 @@
-import type { AdminRecord } from "@/lib/admin-store";
-
 export interface ExperienceContent {
   code: string;
   title: string;
@@ -7,6 +5,19 @@ export interface ExperienceContent {
   slug: string;
   kicker: string;
   details: string[];
+}
+
+/**
+ * Minimal shape used when resolving optional editorial overrides.
+ * This intentionally has no dependency on the removed admin/backend layer.
+ */
+export interface PublicEditorialRecord {
+  contentType?: string;
+  slug?: string;
+  status?: string;
+  title?: string;
+  description?: string;
+  eyebrow?: string;
 }
 
 export const fallbackExperiences: ExperienceContent[] = [
@@ -18,15 +29,25 @@ export const fallbackExperiences: ExperienceContent[] = [
   { code: "06", title: "Luxury Concierge", description: "Thoughtful extras, from flowers and chauffeurs to bespoke requests.", slug: "luxury-concierge", kicker: "Tell us what you need.", details: ["Chauffeur arrangements", "Flowers & details", "Bespoke requests"] },
 ];
 
-export function resolveExperience(records: AdminRecord[], slug: string): ExperienceContent | undefined {
-  const saved = records.find((r) => r.contentType === "editorial" && r.slug === slug && r.status === "published");
+export function resolveExperience(
+  records: ReadonlyArray<PublicEditorialRecord>,
+  slug: string,
+): ExperienceContent | undefined {
+  const saved = records.find(
+    (record) =>
+      record.contentType === "editorial" &&
+      record.slug === slug &&
+      record.status === "published",
+  );
+
   const fallback = fallbackExperiences.find((item) => item.slug === slug);
   if (!fallback) return undefined;
   if (!saved) return fallback;
+
   return {
     ...fallback,
-    title: String(saved.title),
-    description: String(saved.description || fallback.description),
-    kicker: String(saved.eyebrow || fallback.kicker),
+    title: saved.title || fallback.title,
+    description: saved.description || fallback.description,
+    kicker: saved.eyebrow || fallback.kicker,
   };
 }
