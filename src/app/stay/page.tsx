@@ -4,28 +4,37 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import "../section.css";
 
-const details = [
-  ["Arrival", "Private check-in experience"],
-  ["Departure", "Flexible by arrangement"],
-  ["Experience", "Private luxury stay"],
-  ["Booking", "Enquire for availability"],
-];
-
-const amenities = ["Private setting", "City-facing atmosphere", "Concierge planning", "Celebration-ready", "Dining arrangements", "Flexible experiences"];
+const amenities = ["Private living spaces", "Rooftop city views", "Curated dining", "Dedicated concierge", "Celebration-ready setting", "Premium arrival experience"];
 
 export default function StayPage() {
-  return <main className="subPage stayPage">
+  return <main className="subPage">
     <SiteHeader />
     <section className="stayHero">
-      <Image src="/images/01.jpg" alt="Meridian Sky interior" fill priority sizes="100vw" className="stayHeroImage" />
+      <Image src="/images/01.jpg" alt="Meridian Sky private interior" fill priority className="stayHeroImage" sizes="100vw" />
       <div className="stayHeroShade" />
-      <div className="stayHeroCopy"><p className="eyebrow">STAY AT MERIDIAN SKY</p><h1>Stay above<br /><em>the ordinary.</em></h1><p>A private setting designed around the people, moments and memories that bring you here.</p><Link className="button primary" href="/book">Enquire about a stay</Link></div>
+      <div className="stayHeroCopy">
+        <p className="eyebrow">PRIVATE STAY</p>
+        <h1>Make the night<br /><em>yours.</em></h1>
+        <p>A private luxury experience above the city, designed around the way you want to stay.</p>
+        <Link className="button primary" href="/book">Book your experience</Link>
+      </div>
     </section>
-    <section className="stayIntro content"><p className="eyebrow">THE SPACE</p><div className="stayIntroGrid"><h2>Designed for<br /><em>slow moments.</em></h2><div><p>The stay experience is intentionally intimate: considered spaces, atmospheric evenings and room to make the property feel like your own.</p><p>From the first arrival detail to the final evening, the Meridian Sky team can shape the experience around what brings you here.</p></div></div></section>
-    <section className="stayFeature"><div className="stayFeatureImage"><Image src="/images/02.jpg" alt="Meridian Sky living space" fill sizes="(max-width: 800px) 100vw, 55vw" /></div><div className="stayFeatureCopy"><p className="eyebrow">YOUR EXPERIENCE</p><h2>Arrive.<br /><em>Settle in.</em></h2><p>Tell the team what matters to you before arrival and let the details be prepared around your stay.</p><Link className="textLink" href="/concierge">Explore concierge ↗</Link></div></section>
-    <section className="content stayDetails"><div className="sectionSplit"><div><p className="eyebrow">STAY DETAILS</p><h2>Everything<br /><em>considered.</em></h2></div><div className="metaList">{details.map(([a,b])=><div className="metaRow" key={a}><span>{a}</span><span>{b}</span></div>)}</div></div></section>
-    <section className="amenitiesSection"><div className="content"><p className="eyebrow">THE MERIDIAN STANDARD</p><h2>Make the space<br /><em>your own.</em></h2><div className="amenitiesGrid">{amenities.map((item,index)=><div className="amenity" key={item}><span>0{index+1}</span><strong>{item}</strong></div>)}</div></div></section>
-    <section className="pageCta"><p className="eyebrow">PLAN YOUR STAY</p><h2>Make it<br /><em>yours.</em></h2><p>Availability, dates and stay arrangements are confirmed directly with the Meridian Sky team.</p><Link className="button primary" href="/book">Start your enquiry</Link></section>
+    <section className="section stayIntro">
+      <div className="stayIntroGrid">
+        <h2>Above the<br /><em>ordinary.</em></h2>
+        <div><p>Meridian Sky brings together private space, elevated views and thoughtful details in one distinctive city escape.</p><p>Stay for the view. Stay for the atmosphere. Stay for the moments you will remember long after the night is over.</p></div>
+      </div>
+    </section>
+    <section className="stayFeature">
+      <div className="stayFeatureImage"><Image src="/images/02.jpg" alt="Meridian Sky living space" fill sizes="(max-width: 700px) 100vw, 55vw" /></div>
+      <div className="stayFeatureCopy"><p className="eyebrow">THE SPACE</p><h2>Your own<br /><em>skyline.</em></h2><p>Settle into a private environment where the city becomes part of the experience without ever taking over it.</p><Link className="textLink" href="/gallery">Explore the gallery</Link></div>
+    </section>
+    <section className="section amenitiesSection">
+      <p className="eyebrow">THE DETAILS</p>
+      <h2>Everything<br /><em>considered.</em></h2>
+      <div className="amenitiesGrid">{amenities.map((item, index) => <div className="amenity" key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong></div>)}</div>
+    </section>
+    <section className="pageCta"><p className="eyebrow">READY WHEN YOU ARE</p><h2>Come up.<br /><em>Stay awhile.</em></h2><p>Choose your preferred booking platform and continue to Meridian Sky.</p><Link className="button primary" href="/book">Book your experience</Link></section>
     <SiteFooter />
   </main>;
 }
