@@ -1,10 +1,24 @@
 import { cookies } from "next/headers";
 
-const COOKIE_NAME = "meridian_admin_session";
+export const COOKIE_NAME = "meridian_admin_session";
+const PAYLOAD = "authenticated";
 
-export async function hasAdminSession() {
-  const jar = await cookies();
-  return jar.get(COOKIE_NAME)?.value === "authenticated";
+async function signature(secret: string) {
+  const bytes = new TextEncoder().encode(`${PAYLOAD}.${secret}`);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-export { COOKIE_NAME };
+export async function createAdminSessionValue(secret: string) {
+  return `${PAYLOAD}.${await signature(secret)}`;
+}
+
+export async function hasAdminSession() {
+  const secret = process.env.MERIDIAN_ADMIN_KEY;
+  if (!secret) return false;
+  const value = (await cookies()).get(COOKIE_NAME)?.value ?? "";
+  const expected = await createAdminSessionValue(secret);
+  return value === expected;
+}
+
+export { signature };
