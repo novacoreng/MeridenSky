@@ -1,6 +1,7 @@
 import Link from "next/link";
 import GalleryLightbox from "@/components/GalleryLightbox";
 import "../page.css";
+import "./gallery.css";
 
 const items = [
   { src: "/images/01.jpg", label: "Interiors", category: "Spaces" },
