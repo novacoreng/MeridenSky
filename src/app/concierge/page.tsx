@@ -1,14 +1,13 @@
-import SiteHeader from "@/components/SiteHeader";
+import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import "../section.css";
 
 const services = [
-  ["01", "Private Dining", "A table and menu shaped around your occasion."],
-  ["02", "Celebrations", "Flowers, styling, music and thoughtful details."],
-  ["03", "Chauffeur", "Arrival and departure arranged around your schedule."],
-  ["04", "Flowers & Gifting", "Personal details prepared before you arrive."],
-  ["05", "Entertainment", "Music and atmosphere tailored to the night."],
-  ["06", "Bespoke Requests", "Tell us what you need and we will explore it."],
+  ["01", "Arrival", "Chauffeur coordination, thoughtful welcome details and a seamless first impression."],
+  ["02", "Occasion", "Flowers, celebrations, dining and private moments arranged around your plans."],
+  ["03", "City", "Curated suggestions and practical arrangements for making the most of your time."],
+  ["04", "Bespoke", "Tell us what you need. We will explore what can be arranged around your stay."],
 ];
 
-export default function ConciergePage(){return <main className="subPage"><SiteHeader/><section className="subHero"><p className="eyebrow">LUXURY CONCIERGE</p><h1>Your night.<br /><em>Our details.</em></h1><p>Tell us what would make the experience exceptional. Our concierge service is designed around thoughtful preparation, not a list of fixed packages.</p></section><section className="content"><div className="contentGrid">{services.map(([i,t,d])=><article className="contentCard" key={i}><span className="index">{i}</span><h2>{t}</h2><p>{d}</p></article>)}</div></section><section className="pageCta"><p className="eyebrow">MAKE A REQUEST</p><h2>What can we<br /><em>arrange?</em></h2><p>Send your dates, occasion and what you have in mind. The team will respond with the next steps.</p><a className="textLink" href="mailto:hello@meridiansky.co.uk?subject=Meridian%20Sky%20Concierge%20Request">Request concierge ↗</a></section><SiteFooter/></main>}
+export default function ConciergePage(){return <main className="subPage"><header className="simpleNav"><Link className="brand" href="/">MERIDIAN <span>SKY</span></Link><Link className="navCta" href="/stay">Explore the stay</Link></header><section className="subHero"><p className="eyebrow">MERIDIAN CONCIERGE</p><h1>Considered<br /><em>to the detail.</em></h1><p>From the moment you arrive, the little things matter. Share what you have in mind and we can explore the arrangements around your stay.</p></section><section className="content"><div className="contentGrid">{services.map(([i,t,d])=><article className="contentCard" key={i}><span className="index">{i}</span><h2>{t}</h2><p>{d}</p></article>)}</div></section><section className="content conciergeRequest"><p className="eyebrow">PRIVATE REQUEST</p><h2>Start a<br /><em>conversation.</em></h2><p>Give us the essentials. You can keep the request as simple or as detailed as you like.</p><EnquiryForm intent="concierge" /></section><SiteFooter/></main>}
