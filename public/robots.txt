@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://meridiansky.co.uk/sitemap.xml
