@@ -19,12 +19,6 @@ const experiences = [
   ["06", "Luxury Concierge", "Tell us what you need.", "luxury-concierge"],
 ];
 
-const events = [
-  ["SKYLINE FRIDAY", "Friday · 8:00 PM", "Music · Cocktails · City Views", "skyline-friday"],
-  ["SKY SATURDAY", "Saturday · 9:00 PM", "Private Social", "sky-saturday"],
-  ["SUNDAY SKY BRUNCH", "Sunday · 12:00 PM", "Food · Music · Views", "sunday-sky-brunch"],
-];
-
 export default function Home() {
   return (
     <main>
@@ -92,22 +86,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="social section" id="social">
-        <div>
-          <p className="eyebrow">SKY SOCIAL</p>
-          <h2>Meet you<br /><em>at Meridian.</em></h2>
-        </div>
-        <div className="eventList" id="events">
-          {events.map(([name, time, meta, slug]) => (
-            <article className="eventRow" key={name}>
-              <div><h3>{name}</h3><p>{time} · {meta}</p></div>
-              <a href={`/events/${slug}`}>RSVP ↗</a>
-            </article>
-          ))}
-        </div>
-        <a className="textLink" href="/events">View all events ↗</a>
       </section>
 
       <section className="section concierge" id="concierge">
