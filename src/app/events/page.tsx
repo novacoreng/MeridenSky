@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import "../section.css";
+import "./events.css";
 
 const events = [
   { slug:"skyline-friday", name:"SKYLINE FRIDAY", time:"Friday · 8:00 PM", meta:"Music · Cocktails · City Views", copy:"A late-evening social above the city, with music, cocktails and a view that carries the night." },
