@@ -1,12 +1,14 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import GalleryLightbox from "@/components/GalleryLightbox";
-import { readMediaStore, type MediaAsset } from "@/lib/media-store";
+
+const galleryItems = [
+  { src: "/images/01.jpg", label: "Interiors", category: "Interiors", alt: "Meridian Sky interior" },
+  { src: "/images/02.jpg", label: "Living", category: "Living", alt: "Meridian Sky living space" },
+  { src: "/images/03.jpg", label: "City", category: "City", alt: "City view from Meridian Sky" },
+  { src: "/images/04.jpg", label: "Lifestyle", category: "Lifestyle", alt: "Meridian Sky lifestyle" },
+  { src: "/images/05.jpg", label: "Rooftop", category: "Rooftop", alt: "Meridian Sky rooftop" },
+  { src: "/images/06.jpg", label: "View", category: "View", alt: "View from Meridian Sky" },
+];
 
 export default function PublicGallery() {
-  const [items, setItems] = useState<MediaAsset[]>([]);
-  useEffect(() => { setItems(readMediaStore().filter((item) => item.status === "published").sort((a, b) => a.sortOrder - b.sortOrder)); }, []);
-  const galleryItems = items.map((item) => ({ src: item.src, label: item.title, category: item.category.charAt(0).toUpperCase() + item.category.slice(1), alt: item.alt }));
   return <GalleryLightbox items={galleryItems} />;
 }
