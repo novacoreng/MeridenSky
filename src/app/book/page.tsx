@@ -29,7 +29,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
       <div className="bookContent">
         <p className="eyebrow">PRIVATE {intent.toUpperCase()} ENQUIRY</p>
         <h1>{heading}</h1>
-        <p className="lede">Share the details below. Availability and final arrangements will be confirmed separately.</p>
+        <p className="lede">Choose your preferred booking platform below. Availability and final arrangements will be confirmed separately.</p>
         <div className="bookingOptions" aria-label="Booking platforms">
           {bookingOptions.map((option) => <a className="bookingOption" href={option.href} target="_blank" rel="noreferrer" key={option.name}>
             <span className="bookingOptionIcon" aria-hidden="true">{option.icon}</span>
