@@ -1,24 +1,18 @@
 import SiteHeader from "@/components/SiteHeader";
 import "../page.css";
 
-type SearchParams = { intent?: string; experience?: string; event?: string };
-
 const bookingOptions = [
   { name: "Booking.com", label: "Find Meridian Sky on Booking.com", href: "https://www.booking.com/", logo: "/images/booking-logo.svg" },
   { name: "Expedia.com", label: "Find Meridian Sky on Expedia.com", href: "https://www.expedia.com/", logo: "/images/expedia-logo.svg" },
 ] as const;
 
-export default async function BookPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
-  const params = await searchParams;
-  const intent = params.intent === "experience" || params.intent === "event" || params.intent === "concierge" ? params.intent : "stay";
-  const heading = intent === "experience" ? "Plan the experience." : intent === "event" ? "Reserve your place." : intent === "concierge" ? "Tell us what you need." : "Make the night yours.";
-
+export default function BookPage() {
   return <main>
     <SiteHeader />
     <section className="section bookPage">
       <div className="bookContent">
-        <p className="eyebrow">PRIVATE {intent.toUpperCase()} ENQUIRY</p>
-        <h1>{heading}</h1>
+        <p className="eyebrow">PRIVATE LUXURY EXPERIENCE</p>
+        <h1>Make the night yours.</h1>
         <p className="lede">Choose your preferred booking platform below. Availability and final arrangements will be confirmed separately.</p>
         <div className="bookingOptions" aria-label="Booking platforms">
           {bookingOptions.map((option) => <a className="bookingOption" href={option.href} target="_blank" rel="noreferrer" key={option.name}>
