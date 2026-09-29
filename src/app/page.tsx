@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./page.css";
 
 const gallery = [
   { src: "/images/01.jpg", label: "Interiors" },
@@ -9,12 +10,27 @@ const gallery = [
   { src: "/images/06.jpg", label: "View" },
 ];
 
+const experiences = [
+  ["01", "Private Dining", "Your table. Your people. Your view."],
+  ["02", "Rooftop Evenings", "Golden hour through to midnight."],
+  ["03", "Celebrations", "Make the moment unforgettable."],
+  ["04", "Romantic Escapes", "Private moments above the city."],
+  ["05", "Entertainment", "Music, cocktails and your own atmosphere."],
+  ["06", "Luxury Concierge", "Tell us what you need."],
+];
+
+const events = [
+  ["SKYLINE FRIDAY", "Friday • 8:00 PM", "Music • Cocktails • City Views"],
+  ["SKY SATURDAY", "Saturday • 9:00 PM", "Private Social"],
+  ["SUNDAY SKY BRUNCH", "Sunday • 12:00 PM", "Food • Music • Views"],
+];
+
 export default function Home() {
   return (
     <main>
       <header className="nav">
         <a className="brand" href="/">MERIDIAN <span>SKY</span></a>
-        <nav>
+        <nav aria-label="Primary navigation">
           <a href="#stay">Stay</a>
           <a href="#experience">Experience</a>
           <a href="#social">Sky Social</a>
@@ -26,7 +42,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="stay">
-        <Image src="/images/01.jpg" alt="Meridian Sky" fill priority sizes="100vw" className="heroImage" />
+        <Image src="/images/01.jpg" alt="Meridian Sky interior" fill priority sizes="100vw" className="heroImage" />
         <div className="heroShade" />
         <div className="heroContent">
           <p className="eyebrow">PRIVATE LUXURY EXPERIENCE</p>
@@ -66,16 +82,9 @@ export default function Home() {
         <p className="eyebrow">MORE THAN A STAY</p>
         <h2>Make the night<br /><em>yours.</em></h2>
         <div className="experienceGrid">
-          {[
-            ["Private Dining","Your table. Your people. Your view."],
-            ["Rooftop Evenings","Golden hour through to midnight."],
-            ["Celebrations","Make the moment unforgettable."],
-            ["Romantic Escapes","Private moments above the city."],
-            ["Entertainment","Music, cocktails and your own atmosphere."],
-            ["Luxury Concierge","Tell us what you need."]
-          ].map(([title, copy]) => (
-            <article className="experienceCard" key={title}>
-              <span className="cardIndex">0{Math.random ? 1 : 1}</span>
+          {experiences.map(([index, title, copy]) => (
+            <article className="experienceCard" key={index}>
+              <span className="cardIndex">{index}</span>
               <h3>{title}</h3>
               <p>{copy}</p>
               <a href="#book">Explore ↗</a>
@@ -90,17 +99,20 @@ export default function Home() {
           <h2>Meet you<br /><em>at Meridian.</em></h2>
         </div>
         <div className="eventList" id="events">
-          {[
-            ["SKYLINE FRIDAY","Friday • 8:00 PM","Music • Cocktails • City Views"],
-            ["SKY SATURDAY","Saturday • 9:00 PM","Private Social"],
-            ["SUNDAY SKY BRUNCH","Sunday • 12:00 PM","Food • Music • Views"]
-          ].map(([name,time,meta]) => (
+          {events.map(([name, time, meta]) => (
             <article className="eventRow" key={name}>
               <div><h3>{name}</h3><p>{time} · {meta}</p></div>
               <a href="#book">RSVP ↗</a>
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section concierge" id="concierge">
+        <p className="eyebrow">YOUR NIGHT. OUR CONCIERGE.</p>
+        <h2>Tell us what<br /><em>you need.</em></h2>
+        <p className="lede">Private dining, celebrations, chauffeur, flowers, entertainment and thoughtful details built around your stay.</p>
+        <a className="textLink" href="#book">Request concierge ↗</a>
       </section>
 
       <section className="cta section" id="book">
