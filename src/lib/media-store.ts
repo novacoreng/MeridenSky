@@ -1,4 +1,5 @@
 import type { MediaAsset } from "./media";
+export type { MediaAsset } from "./media";
 
 export const mediaStorageKey = "meridian-sky-media-v1";
 
