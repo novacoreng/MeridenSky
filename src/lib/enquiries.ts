@@ -2,7 +2,8 @@ import type { AdminRecord } from "@/lib/admin-store";
 
 export type EnquiryType = "booking" | "concierge" | "event" | "experience";
 export type EnquiryStatus = "new" | "reviewing" | "contacted" | "confirmed" | "closed";
-export type Enquiry = Omit<AdminRecord, "status"> & {
+
+export type Enquiry = AdminRecord & {
   status: EnquiryStatus;
   contentType: "enquiry";
   enquiryType: EnquiryType;
