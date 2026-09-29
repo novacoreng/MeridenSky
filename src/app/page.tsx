@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
 import "./page.css";
 
 const gallery = [
@@ -22,18 +23,7 @@ const experiences = [
 export default function Home() {
   return (
     <main>
-      <header className="nav">
-        <a className="brand" href="/">MERIDIAN <span>SKY</span></a>
-        <nav aria-label="Primary navigation">
-          <a href="/stay">Stay</a>
-          <a href="/experience">Experience</a>
-          <a href="/social">Sky Social</a>
-          <a href="/events">Events</a>
-          <a href="/concierge">Concierge</a>
-          <a href="/gallery">Gallery</a>
-        </nav>
-        <a className="navCta" href="/book">Book your experience</a>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="stay">
         <Image src="/images/01.jpg" alt="Meridian Sky interior" fill priority sizes="100vw" className="heroImage" />
@@ -47,14 +37,14 @@ export default function Home() {
             <a className="button ghost" href="/book">Book your experience</a>
           </div>
         </div>
-        <a className="scrollHint" href="#intro">Scroll to enter ↓</a>
+        <a className="scrollHint" href="#intro">Scroll to enter</a>
       </section>
 
       <section className="intro section" id="intro">
         <p className="eyebrow">THE EXPERIENCE</p>
         <h2>The city is<br /><em>different from up here.</em></h2>
         <p className="lede">Step into Meridian Sky, a private luxury escape designed for unforgettable stays, intimate celebrations and nights worth remembering.</p>
-        <a className="textLink" href="/stay">Discover the experience ↗</a>
+        <a className="textLink" href="#stay">Discover the experience</a>
       </section>
 
       <section className="gallerySection section" id="gallery">
@@ -66,11 +56,11 @@ export default function Home() {
           {gallery.map((item, index) => (
             <figure className={index === 0 ? "galleryItem featured" : "galleryItem"} key={item.src}>
               <Image src={item.src} alt={item.label} fill sizes={index === 0 ? "(max-width: 900px) 100vw, 60vw" : "(max-width: 900px) 50vw, 30vw"} />
-              <figcaption>{item.label}<span>↗</span></figcaption>
+              <figcaption>{item.label}</figcaption>
             </figure>
           ))}
         </div>
-        <a className="textLink" href="/gallery">Enter the full gallery ↗</a>
+        <a className="textLink" href="/gallery">Enter the full gallery</a>
       </section>
 
       <section className="experience section" id="experience">
@@ -82,7 +72,7 @@ export default function Home() {
               <span className="cardIndex">{index}</span>
               <h3>{title}</h3>
               <p>{copy}</p>
-              <a href={`/experience/${slug}`}>Explore ↗</a>
+              <a href={`/experience/${slug}`}>Explore</a>
             </article>
           ))}
         </div>
@@ -92,16 +82,15 @@ export default function Home() {
         <p className="eyebrow">YOUR NIGHT. OUR CONCIERGE.</p>
         <h2>Tell us what<br /><em>you need.</em></h2>
         <p className="lede">Private dining, celebrations, chauffeur, flowers, entertainment and thoughtful details built around your stay.</p>
-        <a className="textLink" href="/concierge">Request concierge ↗</a>
+        <a className="textLink" href="/concierge">Request concierge</a>
       </section>
 
       <section className="cta section" id="book">
         <p className="eyebrow">COME UP</p>
         <h2>The night<br /><em>is waiting.</em></h2>
-        <p>Tell us what brings you to Meridian Sky and we’ll shape the experience around you.</p>
+        <p>Choose your preferred booking platform and continue directly to Meridian Sky on Booking.com or Expedia.com.</p>
         <div className="actions">
-          <a className="button primary" href="/book">Start a private enquiry</a>
-          <a className="button ghost" href="/book?intent=concierge">Concierge enquiry</a>
+          <a className="button primary" href="/book">Book your experience</a>
         </div>
       </section>
 
