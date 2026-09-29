@@ -39,7 +39,9 @@ export default function SiteHeader() {
           aria-label={open ? "Close navigation" : "Open navigation"}
           onClick={() => setOpen(value => !value)}
         >
-          <span aria-hidden="true" /><span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </button>
       </header>
 
