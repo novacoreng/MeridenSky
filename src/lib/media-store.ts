@@ -11,14 +11,29 @@ export const defaultMedia: MediaAsset[] = [
   { id: "media-06", src: "/images/06.jpg", title: "View", alt: "View from Meridian Sky", category: "views", status: "published", featured: false, sortOrder: 6, createdAt: "2026-01-01", updatedAt: "2026-01-01" },
 ];
 
+function isMediaAsset(value: unknown): value is MediaAsset {
+  if (!value || typeof value !== "object") return false;
+  const item = value as Partial<MediaAsset>;
+  return typeof item.id === "string" && typeof item.src === "string" && typeof item.title === "string" && typeof item.alt === "string" && typeof item.category === "string" && typeof item.status === "string" && typeof item.sortOrder === "number";
+}
+
 export function readMediaStore(): MediaAsset[] {
   if (typeof window === "undefined") return defaultMedia;
   try {
     const raw = window.localStorage.getItem(mediaStorageKey);
-    return raw ? JSON.parse(raw) as MediaAsset[] : defaultMedia;
-  } catch { return defaultMedia; }
+    if (!raw) return defaultMedia;
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.every(isMediaAsset) ? parsed : defaultMedia;
+  } catch {
+    return defaultMedia;
+  }
 }
 
 export function writeMediaStore(items: MediaAsset[]) {
-  if (typeof window !== "undefined") window.localStorage.setItem(mediaStorageKey, JSON.stringify(items));
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(mediaStorageKey, JSON.stringify(items));
+  } catch {
+    // Keep the in-memory UI usable if browser storage is unavailable or full.
+  }
 }
