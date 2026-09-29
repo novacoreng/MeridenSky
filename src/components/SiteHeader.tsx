@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   ["Stay", "/"],
@@ -13,15 +13,23 @@ const links = [
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.classList.toggle("mobileMenuOpen", open);
+    return () => document.body.classList.remove("mobileMenuOpen");
+  }, [open]);
+
   return (
     <header className={`siteHeader${open ? " isOpen" : ""}`}>
       <a className="brand" href="/" onClick={() => setOpen(false)} aria-label="Meridian Sky home">
         MERIDIAN <span>SKY</span>
       </a>
-      <nav aria-label="Primary navigation">
+
+      <nav className="desktopNavigation" aria-label="Primary navigation">
         {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
       </nav>
+
       <a className="navCta" href="/book">Book your experience</a>
+
       <button
         className="mobileMenuButton"
         type="button"
@@ -32,8 +40,14 @@ export default function SiteHeader() {
       >
         <span aria-hidden="true" /><span aria-hidden="true" />
       </button>
-      {open && (
-        <div className="mobileNavigation" id="mobile-navigation">
+
+      <div
+        className={`mobileNavigation${open ? " isVisible" : ""}`}
+        id="mobile-navigation"
+        aria-hidden={!open}
+      >
+        <div className="mobileNavigationInner">
+          <div className="mobileNavigationBrand">MERIDIAN <span>SKY</span></div>
           <nav aria-label="Mobile navigation">
             {links.map(([label, href]) => (
               <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>
@@ -41,7 +55,7 @@ export default function SiteHeader() {
             <a className="mobileBook" href="/book" onClick={() => setOpen(false)}>Book your experience</a>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }
