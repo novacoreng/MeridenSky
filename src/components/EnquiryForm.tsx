@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import type { BookingIntent } from "@/lib/booking";
+import { createEnquiry, type EnquiryType } from "@/lib/enquiries";
+import { readAdminStore, writeAdminStore } from "@/lib/admin-store";
 
 type Props = { intent?: BookingIntent; context?: string };
 
@@ -28,10 +30,13 @@ export function EnquiryForm({ intent = "stay", context }: Props) {
       return;
     }
 
-    const generated = `MS-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
-    setReference(generated);
+    const enquiryType: EnquiryType = intent === "experience" || intent === "event" || intent === "concierge" ? intent : "booking";
+    const enquiry = createEnquiry({ enquiryType, name, email, preferredDate: date || undefined, guests: guests || undefined, message: context ? `${context}\n\n${message}`.trim() : message });
+    const store = readAdminStore();
+    writeAdminStore({ ...store, enquiries: [...store.enquiries, enquiry] });
+
+    setReference(enquiry.reference);
     setStatus(`Thanks ${name}. Your ${intent} enquiry has been received for review.`);
-    void { date, guests, message, context };
     event.currentTarget.reset();
     setSubmitting(false);
   }
