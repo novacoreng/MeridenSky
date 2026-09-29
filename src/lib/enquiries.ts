@@ -2,7 +2,7 @@ import type { AdminRecord } from "@/lib/admin-store";
 
 export type EnquiryType = "booking" | "concierge" | "event" | "experience";
 export type EnquiryStatus = "new" | "reviewing" | "contacted" | "confirmed" | "closed";
-export type Enquiry = AdminRecord & { contentType:"enquiry"; enquiryType:EnquiryType; name:string; email:string; phone?:string; preferredDate?:string; guests?:number; message:string; reference:string };
+export type Enquiry = Omit<AdminRecord, "status"> & { status: EnquiryStatus; contentType:"enquiry"; enquiryType:EnquiryType; name:string; email:string; phone?:string; preferredDate?:string; guests?:number; message:string; reference:string };
 
 export function createEnquiry(input: Omit<Enquiry,"id"|"title"|"status"|"updatedAt"|"contentType"|"reference">): Enquiry {
  const now=new Date().toISOString();
