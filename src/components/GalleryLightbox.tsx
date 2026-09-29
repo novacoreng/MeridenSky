@@ -34,7 +34,7 @@ export default function GalleryLightbox({ items }: { items: GalleryItem[] }) {
       {categories.map((category) => <button type="button" key={category} className={filter === category ? "active" : ""} aria-pressed={filter === category} onClick={() => { setFilter(category); setActive(null); }}>{category}</button>)}
     </div>
     {visible.length === 0 ? <div className="galleryEmpty" role="status"><p className="eyebrow">THE SKY / GALLERY</p><h2>Nothing here<br /><em>just yet.</em></h2><p>Published gallery moments will appear here.</p></div> : <div className="immersiveGallery">
-      {visible.map((item, index) => <button type="button" className="immersiveItem" key={`${item.src}-${item.category}`} onClick={() => setActive(index)} aria-label={`Open ${item.label}`}><Image src={item.src} alt={item.alt || item.label} fill sizes="(max-width: 700px) 100vw, 50vw" /><span>{item.label}<b aria-hidden="true">↗</b></span></button>)}
+      {visible.map((item, index) => <button type="button" className="immersiveItem" key={`${item.src}-${item.category}`} onClick={() => setActive(index)} aria-label={`Open ${item.label}`}><Image src={item.src} alt={item.alt || item.label} fill sizes="(max-width: 700px) 100vw, 50vw" /><span>{item.label}</span></button>)}
     </div>}
     {current && <div className="lightbox" role="dialog" aria-modal="true" aria-label={current.label} onClick={() => setActive(null)}>
       <button type="button" ref={closeRef} className="lightboxClose" onClick={() => setActive(null)} aria-label="Close gallery">×</button>
