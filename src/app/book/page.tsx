@@ -4,18 +4,8 @@ import "../page.css";
 type SearchParams = { intent?: string; experience?: string; event?: string };
 
 const bookingOptions = [
-  {
-    name: "Booking.com",
-    label: "Find Meridian Sky on Booking.com",
-    href: "https://www.booking.com/",
-    logo: "/images/booking-logo.svg",
-  },
-  {
-    name: "Expedia.com",
-    label: "Find Meridian Sky on Expedia.com",
-    href: "https://www.expedia.com/",
-    logo: "/images/expedia-logo.svg",
-  },
+  { name: "Booking.com", label: "Find Meridian Sky on Booking.com", href: "https://www.booking.com/", logo: "/images/booking-logo.svg" },
+  { name: "Expedia.com", label: "Find Meridian Sky on Expedia.com", href: "https://www.expedia.com/", logo: "/images/expedia-logo.svg" },
 ] as const;
 
 export default async function BookPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
@@ -34,7 +24,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
           {bookingOptions.map((option) => <a className="bookingOption" href={option.href} target="_blank" rel="noreferrer" key={option.name}>
             <span className="bookingOptionIcon" aria-hidden="true"><img src={option.logo} alt="" /></span>
             <span className="bookingOptionCopy"><strong>{option.name}</strong><small>{option.label}</small></span>
-            <span className="bookingOptionArrow" aria-hidden="true">↗</span>
+            <span className="bookingOptionAction">Visit site</span>
           </a>)}
         </div>
       </div>
