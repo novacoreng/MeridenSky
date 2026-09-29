@@ -1,9 +1,11 @@
 export type AdminCollection = "properties" | "experiences" | "events" | "gallery" | "enquiries" | "concierge";
 
+export type AdminStatus = "draft" | "published" | "pending" | "archived" | "new" | "reviewing" | "contacted" | "confirmed" | "closed";
+
 export type AdminRecord = {
   id: string;
   title: string;
-  status: "draft" | "published" | "pending" | "archived";
+  status: AdminStatus;
   updatedAt: string;
   [key: string]: unknown;
 };
