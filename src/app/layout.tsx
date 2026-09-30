@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   },
   description: "A private luxury experience above the city.",
   applicationName: "Meridian Sky",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Meridian Sky | Above the Ordinary",
