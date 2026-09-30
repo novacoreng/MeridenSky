@@ -3,12 +3,12 @@ import SiteHeader from "@/components/SiteHeader";
 import "./page.css";
 
 const gallery = [
-  { src: "/images/01.jpg", label: "Interiors" },
-  { src: "/images/02.jpg", label: "Living" },
-  { src: "/images/03.jpg", label: "City" },
-  { src: "/images/04.jpg", label: "Lifestyle" },
-  { src: "/images/05.jpg", label: "Rooftop" },
-  { src: "/images/06.jpg", label: "View" },
+  { src: "/images/gallery/gallery-01.jpg", label: "Gallery 01" },
+  { src: "/images/gallery/gallery-02.jpg", label: "Gallery 02" },
+  { src: "/images/gallery/gallery-03.jpg", label: "Gallery 03" },
+  { src: "/images/gallery/gallery-04.jpg", label: "Gallery 04" },
+  { src: "/images/gallery/gallery-05 (2).jpg", label: "Gallery 05" },
+  { src: "/images/gallery/gallery-05.jpg", label: "Gallery 06" },
 ];
 
 const experiences = [
