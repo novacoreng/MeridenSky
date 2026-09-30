@@ -3,7 +3,7 @@ import { fallbackExperiences } from "@/lib/public-content";
 
 const experienceVisuals = [
   ["Cutty Sark", "/images/experience/cutty-sark.jpg"],
-  ["Greenwich Market", "/images/experience/Greenwich Park.jpeg"],
+  ["Greenwich Market", "/images/experience/Greenwich-market.jpeg"],
   ["Greenwich Park", "/images/experience/greenwich-park.jpg"],
   ["IFS Cloud Cable Car", "/images/experience/ifs-cloud-cable-car.jpg"],
   ["National Maritime Museum", "/images/experience/national-maritime-museum.jpg"],
