@@ -21,7 +21,7 @@ export default function SiteHeader() {
     <>
       <header className={`siteHeader${open ? " isOpen" : ""}`}>
         <a className="brand" href="/" onClick={() => setOpen(false)} aria-label="Meridian Sky home">
-          <img src="/images/meridian-sky-logo.webp" alt="Meridian Sky" />
+          <span className="brandText">MERIDIAN SKY</span>
         </a>
         <nav className="desktopNavigation" aria-label="Primary navigation">
           {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
@@ -34,7 +34,7 @@ export default function SiteHeader() {
       <div className={`mobileNavigation${open ? " isVisible" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <div className="mobileNavigationInner">
           <a className="mobileNavigationBrand" href="/" onClick={() => setOpen(false)} aria-label="Meridian Sky home">
-            <img src="/images/meridian-sky-logo.webp" alt="Meridian Sky" />
+            <span className="brandText">MERIDIAN SKY</span>
           </a>
           <nav aria-label="Mobile navigation">
             {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
