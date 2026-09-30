@@ -2,33 +2,33 @@ import Link from "next/link";
 import { fallbackExperiences } from "@/lib/public-content";
 
 const experienceVisuals = [
-  ["Cutty Sark", "cutty-sark"],
-  ["Greenwich Market", "greenwich-market"],
-  ["Greenwich Park", "greenwich-park"],
-  ["IFS Cloud Cable Car", "ifs-cloud-cable-car"],
-  ["National Maritime Museum", "national-maritime-museum"],
-  ["Old Royal Naval College", "old-royal-naval-college"],
-  ["Outlet Shopping at The O2", "outlet-shopping-at-the-o2"],
-  ["Peter Harrison Planetarium", "peter-harrison-planetarium"],
-  ["Royal Observatory", "royal-observatory"],
-  ["The O2", "the-o2"],
-  ["Uber Boat by Thames Clippers", "uber-boat-by-thames-clippers"],
-  ["Up at The O2", "up-at-the-o2"],
+  ["Cutty Sark", "0%", "0%"],
+  ["Greenwich Market", "50%", "0%"],
+  ["Greenwich Park", "100%", "0%"],
+  ["IFS Cloud Cable Car", "0%", "50%"],
+  ["National Maritime Museum", "50%", "50%"],
+  ["Old Royal Naval College", "100%", "50%"],
+  ["Outlet Shopping at The O2", "0%", "100%"],
+  ["Peter Harrison Planetarium", "50%", "100%"],
+  ["Royal Observatory", "100%", "100%"],
+  ["The O2", "0%", "150%"],
+  ["Uber Boat by Thames Clippers", "50%", "150%"],
+  ["Up at The O2", "100%", "150%"],
 ] as const;
 
 export function PublicExperienceList() {
   return (
     <div className="experienceVisualGrid" aria-label="Meridian Sky experiences">
-      {experienceVisuals.map(([title, key], index) => (
+      {experienceVisuals.map(([title, x, y]) => (
         <Link
           className="experienceVisualCard"
           href="/book"
-          key={key}
+          key={title}
           aria-label={`Book your Meridian Sky experience near ${title}`}
         >
           <span
             className="experienceVisualImage"
-            style={{ "--experience-position": `${index * 100}%` } as React.CSSProperties}
+            style={{ "--experience-x": x, "--experience-y": y } as React.CSSProperties}
             role="img"
             aria-label={title}
           />
