@@ -1,13 +1,38 @@
 import GalleryLightbox from "@/components/GalleryLightbox";
 
-const galleryItems = [
-  { src: "/images/01.jpg", label: "Interiors", category: "Interiors", alt: "Meridian Sky interior" },
-  { src: "/images/02.jpg", label: "Living", category: "Living", alt: "Meridian Sky living space" },
-  { src: "/images/03.jpg", label: "City", category: "City", alt: "City view from Meridian Sky" },
-  { src: "/images/04.jpg", label: "Lifestyle", category: "Lifestyle", alt: "Meridian Sky lifestyle" },
-  { src: "/images/05.jpg", label: "Rooftop", category: "Rooftop", alt: "Meridian Sky rooftop" },
-  { src: "/images/06.jpg", label: "View", category: "View", alt: "View from Meridian Sky" },
-];
+const galleryFiles = [
+  "gallery-01.jpg",
+  "gallery-02.jpg",
+  "gallery-03.jpg",
+  "gallery-04.jpg",
+  "gallery-05 (2).jpg",
+  "gallery-05.jpg",
+  "gallery-06.jpg",
+  "gallery-07.jpg",
+  "gallery-08.jpg",
+  "gallery-09.jpg",
+  "gallery-10.jpg",
+  "gallery-11.jpg",
+  "gallery-12.jpg",
+  "gallery-13.jpg",
+  "gallery-14.jpg",
+  "gallery-15.jpg",
+  "gallery-16.jpg",
+  "gallery-17.jpg",
+  "gallery-18.jpg",
+  "gallery-19.jpg",
+  "gallery-20.jpg",
+  "gallery-21.jpg",
+  "gallery-22.jpg",
+  "gallery-23.jpg",
+] as const;
+
+const galleryItems = galleryFiles.map((file, index) => ({
+  src: `/images/gallery/${file}`,
+  label: `Gallery ${String(index + 1).padStart(2, "0")}`,
+  category: "Gallery",
+  alt: `Meridian Sky gallery image ${index + 1}`,
+}));
 
 export default function PublicGallery() {
   return <GalleryLightbox items={galleryItems} />;
