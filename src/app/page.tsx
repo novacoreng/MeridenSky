@@ -14,7 +14,7 @@ const gallery = [
 const experiences = [
   ["Cutty Sark", "/images/experience/cutty-sark.jpg"],
   ["Greenwich Market", "/images/experience/greenwich-market.jpg"],
-  ["Greenwich Park", "/images/experience/greenwich-park.jpg"],
+  ["Greenwich Park", "/images/experience/Greenwich Park.jpeg"],
   ["IFS Cloud Cable Car", "/images/experience/ifs-cloud-cable-car.jpg"],
   ["National Maritime Museum", "/images/experience/national-maritime-museum.jpg"],
   ["Old Royal Naval College", "/images/experience/old-royal-naval-college.jpg"],
