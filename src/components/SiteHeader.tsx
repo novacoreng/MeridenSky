@@ -22,40 +22,23 @@ export default function SiteHeader() {
     <>
       <header className={`siteHeader${open ? " isOpen" : ""}`}>
         <a className="brand" href="/" onClick={() => setOpen(false)} aria-label="Meridian Sky home">
-          MERIDIAN <span>SKY</span>
+          <img src="/images/meridian-sky-logo.webp" alt="Meridian Sky" />
         </a>
-
         <nav className="desktopNavigation" aria-label="Primary navigation">
           {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-
         <a className="navCta" href="/book">Book your experience</a>
-
-        <button
-          className="mobileMenuButton"
-          type="button"
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          onClick={() => setOpen(value => !value)}
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
+        <button className="mobileMenuButton" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(value => !value)}>
+          <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
         </button>
       </header>
-
-      <div
-        className={`mobileNavigation${open ? " isVisible" : ""}`}
-        id="mobile-navigation"
-        aria-hidden={!open}
-      >
+      <div className={`mobileNavigation${open ? " isVisible" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <div className="mobileNavigationInner">
-          <div className="mobileNavigationBrand">MERIDIAN <span>SKY</span></div>
+          <a className="mobileNavigationBrand" href="/" onClick={() => setOpen(false)} aria-label="Meridian Sky home">
+            <img src="/images/meridian-sky-logo.webp" alt="Meridian Sky" />
+          </a>
           <nav aria-label="Mobile navigation">
-            {links.map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>
-            ))}
+            {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
             <a className="mobileBook" href="/book" onClick={() => setOpen(false)}>Book your experience</a>
           </nav>
         </div>
