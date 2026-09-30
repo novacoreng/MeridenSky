@@ -12,18 +12,18 @@ const gallery = [
 ];
 
 const experiences = [
-  ["Cutty Sark", "/images/01.jpg"],
-  ["Greenwich Market", "/images/02.jpg"],
-  ["Greenwich Park", "/images/03.jpg"],
-  ["IFS Cloud Cable Car", "/images/04.jpg"],
-  ["National Maritime Museum", "/images/05.jpg"],
-  ["Old Royal Naval College", "/images/06.jpg"],
-  ["Outlet Shopping at The O2", "/images/01.jpg"],
-  ["Peter Harrison Planetarium", "/images/02.jpg"],
-  ["Royal Observatory", "/images/03.jpg"],
-  ["The O2", "/images/04.jpg"],
-  ["Uber Boat by Thames Clippers", "/images/05.jpg"],
-  ["Up at The O2", "/images/06.jpg"],
+  ["Cutty Sark", "/images/experience/cutty-sark.jpg"],
+  ["Greenwich Market", "/images/experience/Greenwich Park.jpeg"],
+  ["Greenwich Park", "/images/experience/greenwich-park.jpg"],
+  ["IFS Cloud Cable Car", "/images/experience/ifs-cloud-cable-car.jpg"],
+  ["National Maritime Museum", "/images/experience/national-maritime-museum.jpg"],
+  ["Old Royal Naval College", "/images/experience/old-royal-naval-college.jpg"],
+  ["Outlet Shopping at The O2", "/images/experience/outlet-shopping-at-the-o2.jpg"],
+  ["Peter Harrison Planetarium", "/images/experience/peter-harrison-planetarium.jpg"],
+  ["Royal Observatory", "/images/experience/royal-observatory.jpg"],
+  ["The O2", "/images/experience/the-o2.jpg"],
+  ["Uber Boat by Thames Clippers", "/images/experience/uber-boat-by-thames-clippers.jpg"],
+  ["Up at The O2", "/images/experience/up-at-the-o2.jpg"],
 ] as const;
 
 export default function Home() {
