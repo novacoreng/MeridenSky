@@ -12,13 +12,19 @@ const gallery = [
 ];
 
 const experiences = [
-  ["01", "Private Dining", "Your table. Your people. Your view.", "private-dining"],
-  ["02", "Rooftop Evenings", "Golden hour through to midnight.", "rooftop-evenings"],
-  ["03", "Celebrations", "Make the moment unforgettable.", "celebrations"],
-  ["04", "Romantic Escapes", "Private moments above the city.", "romantic-escapes"],
-  ["05", "Entertainment", "Music, cocktails and your own atmosphere.", "entertainment"],
-  ["06", "Luxury Concierge", "Tell us what you need.", "luxury-concierge"],
-];
+  ["Cutty Sark", "/images/01.jpg"],
+  ["Greenwich Market", "/images/02.jpg"],
+  ["Greenwich Park", "/images/03.jpg"],
+  ["IFS Cloud Cable Car", "/images/04.jpg"],
+  ["National Maritime Museum", "/images/05.jpg"],
+  ["Old Royal Naval College", "/images/06.jpg"],
+  ["Outlet Shopping at The O2", "/images/01.jpg"],
+  ["Peter Harrison Planetarium", "/images/02.jpg"],
+  ["Royal Observatory", "/images/03.jpg"],
+  ["The O2", "/images/04.jpg"],
+  ["Uber Boat by Thames Clippers", "/images/05.jpg"],
+  ["Up at The O2", "/images/06.jpg"],
+] as const;
 
 export default function Home() {
   return (
@@ -44,7 +50,7 @@ export default function Home() {
         <p className="eyebrow">THE EXPERIENCE</p>
         <h2>The city is<br /><em>different from up here.</em></h2>
         <p className="lede">Step into Meridian Sky, a private luxury escape designed for unforgettable stays, intimate celebrations and nights worth remembering.</p>
-        <a className="textLink" href="#stay">Discover the experience</a>
+        <a className="textLink" href="/experience">Discover the experience</a>
       </section>
 
       <section className="gallerySection section" id="gallery">
@@ -64,18 +70,16 @@ export default function Home() {
       </section>
 
       <section className="experience section" id="experience">
-        <p className="eyebrow">MORE THAN A STAY</p>
-        <h2>Make the night<br /><em>yours.</em></h2>
+        <p className="eyebrow">THE EXPERIENCE</p>
         <div className="experienceGrid">
-          {experiences.map(([index, title, copy, slug]) => (
-            <article className="experienceCard" key={index}>
-              <span className="cardIndex">{index}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-              <a href={`/experience/${slug}`}>Explore</a>
-            </article>
+          {experiences.map(([title, src]) => (
+            <a className="experienceCard" href="/book" key={title} aria-label={`Book ${title}`}>
+              <Image src={src} alt={title} fill sizes="(max-width: 700px) 100vw, 33vw" />
+              <span>{title}</span>
+            </a>
           ))}
         </div>
+        <a className="textLink" href="/experience">Explore all experiences</a>
       </section>
 
       <section className="section concierge" id="concierge">
