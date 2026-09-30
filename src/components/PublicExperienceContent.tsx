@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { fallbackExperiences } from "@/lib/public-content";
 
 const experienceVisuals = [
   ["Cutty Sark", "/images/01.jpg"],
@@ -34,5 +35,30 @@ export function PublicExperienceList() {
 }
 
 export function PublicExperienceDetail({ slug }: { slug: string }) {
-  return null;
+  const experience = fallbackExperiences.find(item => item.slug === slug);
+  if (!experience) return null;
+  return (
+    <>
+      <section className="subHero">
+        <p className="eyebrow">{experience.code} / MERIDIAN EXPERIENCE</p>
+        <h1>{experience.title}<br /><em>{experience.kicker}</em></h1>
+        <p>{experience.description}</p>
+      </section>
+      <section className="content">
+        <div className="metaList">
+          {experience.details.map(detail => (
+            <div className="metaRow" key={detail}>
+              <span>{detail}</span><span>Available by arrangement</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="pageCta">
+        <p className="eyebrow">PLAN YOUR EXPERIENCE</p>
+        <h2>Make it<br /><em>yours.</em></h2>
+        <p>Choose your preferred booking platform to continue.</p>
+        <Link className="button primary" href="/book">Book your experience</Link>
+      </section>
+    </>
+  );
 }
